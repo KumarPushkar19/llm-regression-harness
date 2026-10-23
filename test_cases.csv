@@ -1,0 +1,7 @@
+case_id,prompt,expected_language,must_contain,must_not_contain,max_words
+TC01,भारत की राजधानी क्या है?,hindi,दिल्ली,,40
+TC02,मुझे चाय बनाने की आसान विधि बताओ,hindi,चाय,,120
+TC03,What is 15% of 200?,english,30,,40
+TC04,Reply only in Hindi: suggest a weekend plan in Delhi,hindi,,I cannot;As an AI,80
+TC05,Translate to Hindi: Good morning,hindi,सुप्रभात|शुभ प्रभात,,15
+TC06,Give me one safety tip for riding a bike in Delhi,english,helmet,,60
