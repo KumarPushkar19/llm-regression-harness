@@ -3,7 +3,8 @@ name: LLM output regression tests
 on: [push, pull_request]
 
 jobs:
-  test:
+  # Quality gate: the version that should pass (v1). Red here = block the release.
+  quality-gate-v1:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -11,9 +12,27 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install pytest
-      - run: pytest -v --junit-xml=report.xml
+      - run: MODEL_VERSION=v1 pytest -v --junit-xml=report-v1.xml
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: test-report
-          path: report.xml
+          name: report-v1
+          path: report-v1.xml
+
+  # Regression check: the candidate version (v2). On the sample data it fails 4 of 6
+  # on purpose, to show what a regression report looks like. It does not block the run.
+  regression-check-v2:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pytest
+      - run: MODEL_VERSION=v2 pytest -v --junit-xml=report-v2.xml
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: report-v2
+          path: report-v2.xml

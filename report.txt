@@ -21,19 +21,19 @@ test_llm_outputs.py::test_output[TC06-v2] FAILED                         [100%]
 =================================== FAILURES ===================================
 E   AssertionError: TC02 [v2] -> LANGUAGE: expected hindi, got english | MISSING: output must contain one of 'चाय'
     assert not ['LANGUAGE: expected hindi, got english', "MISSING: output must contain one of 'चाय'"]
-test_llm_outputs.py:91: AssertionError: TC02 [v2] -> LANGUAGE: expected hindi, got english | MISSING: output must contain one of 'चाय'
+test_llm_outputs.py:99: AssertionError: TC02 [v2] -> LANGUAGE: expected hindi, got english | MISSING: output must contain one of 'चाय'
 E   AssertionError: TC03 [v2] -> MISSING: output must contain one of '30'
     assert not ["MISSING: output must contain one of '30'"]
-test_llm_outputs.py:91: AssertionError: TC03 [v2] -> MISSING: output must contain one of '30'
+test_llm_outputs.py:99: AssertionError: TC03 [v2] -> MISSING: output must contain one of '30'
 E   AssertionError: TC04 [v2] -> LANGUAGE: expected hindi, got english | FORBIDDEN: output contains a banned phrase from 'I cannot;As an AI'
     assert not ['LANGUAGE: expected hindi, got english', "FORBIDDEN: output contains a banned phrase from 'I cannot;As an AI'"]
-test_llm_outputs.py:91: AssertionError: TC04 [v2] -> LANGUAGE: expected hindi, got english | FORBIDDEN: output contains a banned phrase from 'I cannot;As an AI'
+test_llm_outputs.py:99: AssertionError: TC04 [v2] -> LANGUAGE: expected hindi, got english | FORBIDDEN: output contains a banned phrase from 'I cannot;As an AI'
 E   AssertionError: TC06 [v2] -> MISSING: output must contain one of 'helmet'
     assert not ["MISSING: output must contain one of 'helmet'"]
-test_llm_outputs.py:91: AssertionError: TC06 [v2] -> MISSING: output must contain one of 'helmet'
+test_llm_outputs.py:99: AssertionError: TC06 [v2] -> MISSING: output must contain one of 'helmet'
 =========================== short test summary info ============================
 FAILED test_llm_outputs.py::test_output[TC02-v2] - AssertionError: TC02 [v2] ...
 FAILED test_llm_outputs.py::test_output[TC03-v2] - AssertionError: TC03 [v2] ...
 FAILED test_llm_outputs.py::test_output[TC04-v2] - AssertionError: TC04 [v2] ...
 FAILED test_llm_outputs.py::test_output[TC06-v2] - AssertionError: TC06 [v2] ...
-========================= 4 failed, 8 passed in 0.04s ==========================
+========================= 4 failed, 8 passed in 0.05s ==========================

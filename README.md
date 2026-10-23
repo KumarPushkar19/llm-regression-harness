@@ -30,7 +30,16 @@ pytest -v --tb=line > report.txt          # human-readable
 pytest -v --junit-xml=report.xml          # machine-readable, for CI / audit trail
 ```
 
-The GitHub Actions workflow in `.github/workflows/tests.yml` runs the suite on every push and stores `report.xml` as a build artifact, so every model-version comparison is kept.
+Test one version only:
+
+```
+MODEL_VERSION=v2 pytest -v
+```
+
+The GitHub Actions workflow (`.github/workflows/tests.yml`) runs two jobs on every push and keeps each JUnit report as a build artifact:
+
+- **quality-gate-v1** — the version that must pass; a failure here blocks the release.
+- **regression-check-v2** — the candidate version; on the sample data it fails 4 of 6 on purpose, so the report shows what a regression looks like. It is informational and does not block the run.
 
 ## Sample result (included data)
 

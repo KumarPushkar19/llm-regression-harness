@@ -8,11 +8,13 @@ Files:
   test_cases.csv    -> the rules for each prompt (what a correct answer must look like)
   model_outputs.csv -> the actual answers each model version gave
 
-Run:  pytest -v
-Report: pytest -v --tb=short > report.txt
+Run:  pytest -v                      (all versions)
+      MODEL_VERSION=v2 pytest -v     (one version only)
+Report: pytest -v --tb=line > report.txt
 """
 
 import csv
+import os
 import re
 import pytest
 
@@ -24,6 +26,12 @@ def load_csv(path):
 
 CASES = {row["case_id"]: row for row in load_csv("test_cases.csv")}
 OUTPUTS = load_csv("model_outputs.csv")
+
+# Optional filter: MODEL_VERSION=v2 pytest   -> test only that version.
+# Unset = test every version in the file.
+ONLY = os.environ.get("MODEL_VERSION")
+if ONLY:
+    OUTPUTS = [row for row in OUTPUTS if row["model_version"] == ONLY]
 
 # Each row of model_outputs.csv becomes one test. The id shows up in the report,
 # e.g.  test_output[TC03-v2]
